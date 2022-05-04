@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 if (!isProduction) {
-    app.use(cors();)
+    app.use(cors());
 }
 
 app.use(helmet({
