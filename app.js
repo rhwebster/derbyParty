@@ -5,6 +5,13 @@ const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 const morgan = require('morgan');
+const helmet = require('helmet');
+const { ValidationError } = require('sequelize');
+const path = require('path');
+
+const routes = require('./routes');
+const { environment } = require('./config');
+const isProduction = environment === 'production';
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -34,3 +41,5 @@ app.use((_req, _res, next) => {
 
 const port = 8081;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+module.exports = app;
