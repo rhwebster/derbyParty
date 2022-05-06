@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editHorses } from '../store/horses';
+import { getHorses } from '../store/horses';
 import { Modal } from '../../context/Modal';
+import { useParams } from 'react-router-dom';
+import ChooseAHorse from './ChooseAHorse';
 
 export default function Horses() {
     const dispatch = useDispatch();
-    const [showModal, setShowModal] = useState();
+
+    const { horseId } = useParams();
     
-    const horses = useSelector(state => state.horses);
+    const horses = useSelector(state => 
+        state.horses.horseList.map(horseId => state.horses[horseId])
+    );
+    const [showModal, setShowModal] = useState(false);
     
     const takenHorses = horses.filter(horse => horse.bettor);
     const availableHorses = horses.filter(horse => !horse.bettor);
 
     useEffect(() => {
-        dispatch(editHorses(horse.bettor));
-    }, [horse.bettor]);
+        dispatch(getHorses());
+    }, []);
 
     return (
         <div id='home-page-background'>
@@ -37,6 +43,12 @@ export default function Horses() {
                         )
                     })}
             </div>
+            {showModal ? (
+                <ChooseAHorse 
+                    horses={horses}
+                    hideModal={() => setShowModal(false)} 
+                />
+            ) : null}
         </div>
     )
 }

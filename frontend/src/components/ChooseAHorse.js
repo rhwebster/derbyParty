@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getHorses, editHorse } from '../store/horses';
 
-const ChooseAHorse = ({ horses }) => {
-    const horses = useSelector(state => state.horses);
+const ChooseAHorse = ({ horses, hideform }) => {
+    const horses = useSelector(state => state.horses.horseList);
     const dispatch = useDispatch();
 
     const [bettor, setBettor] = useState(horse.bettor);
 
     const updateBettor = (e) => setBettor(e.target.value);
+
+    useEffect(() => {
+        dispatch(getHorses());
+    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,7 +22,7 @@ const ChooseAHorse = ({ horses }) => {
             bettor
         };
 
-        const updatedHorse = await dispatch(updateHorse(payload));
+        const updatedHorse = await dispatch(editHorse(payload));
 
         if (updatedHorse) {
             hideform();
