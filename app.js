@@ -1,5 +1,5 @@
 const express = require('express');
-const horses = require('./horseData');
+const horses = require('./db/horseData');
 
 const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
