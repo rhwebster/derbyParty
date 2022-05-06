@@ -26,8 +26,23 @@ const ChooseAHorse = ({ horses }) => {
         const handleCancel = (e) => {
             e.preventDefault();
             hideform();
-        }
+        };
+    };
 
-        return ()
-    }
-}
+    return (
+        <section className='choose-a-horse-form'>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type='bettor'
+                    placeholder='Name'
+                    required
+                    value={bettor}
+                    onChange={updateBettor} />
+            </form>
+            <button type="submit">This Is My Horse</button>
+            <button type="button" onClick={handleCancel}>I Changed My Mind</button>
+        </section>
+    );
+};
+
+export default ChooseAHorse;
