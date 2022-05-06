@@ -15,7 +15,7 @@ function Root() {
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
-                <App />?
+                <App />
             </BrowserRouter>
         </ReduxProvider>
     );
@@ -24,6 +24,6 @@ function Root() {
 ReactDOM.render(
     <React.StrictMode>
         <Root />
-    </React.StrictMode>
+    </React.StrictMode>,
     document.getElementById('root')
 )

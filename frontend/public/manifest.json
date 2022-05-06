@@ -1,0 +1,8 @@
+{
+    "short_name": "Derby App",
+    "name": "Kentucky Derby Party Betting App",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
