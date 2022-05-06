@@ -12,16 +12,16 @@ const load = horseList => ({
 })
 
 export const getHorses = () => async dispatch => {
-    const res = await fetch(`/api/horses`);
+    const res = await fetch(`/api/horses/`);
 
-    if (res.ok) {
+    if ( res.ok) {
         const horseList = await res.json();
         dispatch(load(horseList));
     }
 };
 
 export const editHorse = data => async dispatch => {
-    const res = await fetch(`/api/horses/${data.id}`, {
+    const res = await fetch(`/api/horses/${data.id}/edit`, {
         method: 'put',
         headers: {
             'Content-Type': 'application/json'

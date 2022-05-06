@@ -43,12 +43,14 @@ export default function Horses() {
                         )
                     })}
             </div>
-            {showModal ? (
-                <ChooseAHorse 
-                    horses={horses}
-                    hideModal={() => setShowModal(false)} 
-                />
-            ) : null}
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)} name='choose-a-horse'>
+                    <ChooseAHorse
+                        horses={horses}
+                    />
+                </Modal>
+             
+            )}
         </div>
     )
 }

@@ -5,6 +5,12 @@ export default function App () {
     const dispatch = useDispatch();
 
     return (
-        <HomePage />
-    )
-}
+        <Switch>
+            <Route path='/' exact>
+                <HomePage />
+            </Route>
+        </Switch>
+    );
+};
+
+export default App;
